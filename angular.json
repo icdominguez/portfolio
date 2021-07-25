@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "13e671c9-883e-48fe-b25e-144cdf7590a9"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -8,6 +11,9 @@
       "schematics": {
         "@schematics/angular:application": {
           "strict": true
+        },
+        "@schematics/angular:component": {
+          "style": "scss"
         }
       },
       "root": "",
@@ -15,7 +21,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "ngx-build-plus:browser",
           "options": {
             "outputPath": "dist/portfolio",
             "index": "src/index.html",
@@ -65,7 +71,7 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
           "configurations": {
             "production": {
               "browserTarget": "portfolio:build:production"
@@ -77,13 +83,13 @@
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "builder": "ngx-build-plus:extract-i18n",
           "options": {
             "browserTarget": "portfolio:build"
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "ngx-build-plus:karma",
           "options": {
             "main": "src/test.ts",
             "polyfills": "src/polyfills.ts",
